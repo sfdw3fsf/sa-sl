@@ -23,6 +23,32 @@ export default tseslint.config(
         'warn',
         { allowConstantExport: true },
       ],
+
+      // SELF RULES ----------------------------------------------------------------
+
+      // Turn off error red warning for unused import, variables, functions
+      "@typescript-eslint/no-unused-vars": ["warn", {
+        "vars": "all",
+        "args": "after-used",
+        "caughtErrors": "all",
+        "ignoreRestSiblings": false,
+        "reportUsedIgnorePattern": false
+      }],
+
+      //If you want variables only warn when missing type define
+      '@typescript-eslint/typedef': [
+        'warn',
+        {
+          parameter: true,
+          arrowParameter: true,
+        },
+      ],
+
+      //Allow to use any type definition
+      '@typescript-eslint/no-explicit-any': [
+        'warn'
+      ]
+
     },
   },
 )

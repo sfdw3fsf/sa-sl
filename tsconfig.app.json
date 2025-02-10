@@ -22,7 +22,9 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
-
+    // Self Rules
+    // For not defined type props not red (I dont want it)
+    "noImplicitAny": false
   },
   "include": ["src"]
 }
