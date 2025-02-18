@@ -1,6 +1,9 @@
 import { useState } from 'react'
 import viteLogo from '/vite.svg'
 import './App.css'
+import { Routes, Route } from 'react-router'
+import Home from './pages/Home'
+import Login from './pages/Login'
 
 function Hi(num: any, string) {
     const h = num + string
@@ -13,11 +16,10 @@ function App() {
 
     return (
         <>
-            <div className="text-primary-600 flex h-10 w-[500px] items-center justify-center bg-[#353]">
-                <h1 className="text-xl">Hi</h1>
-            </div>
-            <p>Switzland Service greet you !</p>
-            <p className="hi there">""</p>
+            <Routes>
+                <Route index element={<Home />} />
+                <Route path="login" element={<Login />} />\
+            </Routes>
         </>
     )
 }

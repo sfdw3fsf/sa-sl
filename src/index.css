@@ -2,9 +2,22 @@
 
 @theme {
     --font-display: 'Satoshi', sans-serif;
-    --breakpoint-3xl: 1920px;
-
     --color-avocado-500: oklch(0.84 0.18 117.33);
     --color-primary-500: #876;
     --color-primary-600: #934;
+}
+
+/* Base attribute h1,p... */
+@layer base {
+    body {
+        @apply min-w-screen bg-gray-500 p-6;
+    }
+}
+
+/* Self classes */
+@layer components {
+}
+
+/* Extend tailiwnd classes: scrollbar, line-clamp... */
+@layer utilities {
 }
