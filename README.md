@@ -29,3 +29,4 @@ eslintConfigPrettier,
 ];
 
 ---
+👉 If you’re using Tailwind CLI, Vite, or Next.js, PostCSS and Autoprefixer are already built-in! You don’t need to install them separately.
