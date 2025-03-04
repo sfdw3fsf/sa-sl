@@ -3,14 +3,23 @@
 @theme {
     --font-display: 'Satoshi', sans-serif;
     --color-avocado-500: oklch(0.84 0.18 117.33);
-    --color-primary-500: #876;
+
+    --color-primary-100: #959cb6;
+    --color-primary-500: #0c1421;
     --color-primary-600: #934;
+
+    --color-border-soft: #e2e8f0;
+
+    --color-placeholder: #64748b;
+
+    --color-brand: #34987b;
 }
 
 /* Base attribute h1,p... */
 @layer base {
     body {
-        @apply min-w-screen bg-gray-500 p-6;
+        /* @apply min-w-screen p-6; */
+        @apply h-full;
     }
 }
 
