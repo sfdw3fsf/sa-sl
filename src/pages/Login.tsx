@@ -44,7 +44,7 @@ function Login() {
                 <section className="max-h-screen flex-1">
                     <img
                         className="object-fit rounded-lg"
-                        src="/public/images/login/login_banner2.svg"
+                        src="/images/login/login_banner2.svg"
                         alt="Image about art"
                     />
                 </section>

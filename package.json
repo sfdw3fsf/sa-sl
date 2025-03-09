@@ -11,7 +11,11 @@
   },
   "dependencies": {
     "@tailwindcss/vite": "^4.0.6",
+    "@tanstack/react-query": "4",
+    "@tanstack/react-query-devtools": "4",
+    "axios": "^1.8.1",
     "prettier-plugin-tailwindcss": "^0.6.11",
+    "query-string": "^9.1.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-router": "^7.1.5",
@@ -20,6 +24,7 @@
   },
   "devDependencies": {
     "@eslint/js": "^9.17.0",
+    "@tanstack/eslint-plugin-query": "4",
     "@types/react": "^18.3.18",
     "@types/react-dom": "^18.3.5",
     "@vitejs/plugin-react": "^4.3.4",
