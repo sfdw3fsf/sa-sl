@@ -13,6 +13,11 @@
     --color-placeholder: #64748b;
 
     --color-brand: #34987b;
+
+    --color-bg-slate-50: '#F8FAFC';
+
+    --color-text-1: #94a3b8;
+    --color-text-2: #64748b;
 }
 
 /* Base attribute h1,p... */
@@ -29,4 +34,44 @@
 
 /* Extend tailiwnd classes: scrollbar, line-clamp... */
 @layer utilities {
+}
+
+/* Src Jonas */
+.loader {
+    width: 45px;
+    aspect-ratio: 0.75;
+    --c: no-repeat linear-gradient(#333 0 0);
+    background:
+        var(--c) 0% 50%,
+        var(--c) 50% 50%,
+        var(--c) 100% 50%;
+    background-size: 20% 50%;
+    animation: loading 1s infinite linear;
+}
+
+@keyframes loading {
+    20% {
+        background-position:
+            0% 0%,
+            50% 50%,
+            100% 50%;
+    }
+    40% {
+        background-position:
+            0% 100%,
+            50% 0%,
+            100% 50%;
+    }
+    60% {
+        background-position:
+            0% 50%,
+            50% 100%,
+            100% 0%;
+    }
+    80% {
+        background-position:
+            0% 50%,
+            50% 50%,
+            100% 100%;
+    }
 }

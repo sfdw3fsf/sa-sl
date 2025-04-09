@@ -1,20 +1,17 @@
 import React from 'react'
-import { instance } from '../data/axios'
 import { useQueries, useQuery } from '@tanstack/react-query'
-import { queryKey } from './../../node_modules/@tanstack/query-core/src/tests/utils'
+import PageContainer from '../layouts/PageContainer'
+import { instance } from '../data/axios'
+import Loading from '../components/Loading'
+import { RegularResponse } from '../utils/type/BaseResponse'
 
-type MenuFoodProps = {
+export type MenuFoodProps = {
     id: number
     name: string
     unitPrice?: number
     imageUrl: string
     ingredients?: string[]
     soldOut?: boolean
-}
-
-type RegularResponse<T> = {
-    data: T
-    status?: string
 }
 
 function MenuFood() {
@@ -29,26 +26,42 @@ function MenuFood() {
     const getMenuFoodApi = (): Promise<RegularResponse<MenuFoodProps[]>> =>
         instance.get('/menu')
 
-    const { data: menuData, error } = useQuery({
+    const {
+        data: menuData,
+        error,
+        isLoading,
+    } = useQuery({
         queryKey: ['todos'],
         queryFn: getMenuFoodApi,
     })
 
-    return (
-        <div>
-            {menuData?.data.map((item, index) => (
-                <section key={index}>
-                    <h1>{item.name}</h1>
-                    <p>{item.unitPrice}</p>
-                    <img src={item.imageUrl} alt="menu dishes"></img>
-                    <ul>
-                        {item.ingredients?.map((item, index) => (
-                            <li>{item}</li>
-                        ))}
-                    </ul>
-                </section>
+    return isLoading ? (
+        <Loading />
+    ) : (
+        <div className="grid w-full grid-cols-[repeat(auto-fit,minmax(270px,1fr))] gap-4">
+            {menuData?.data.map((item: MenuFoodProps) => (
+                <MenuItem menu={item} key={item.id} />
             ))}
         </div>
+    )
+}
+
+function MenuItem({ menu }: { menu: MenuFoodProps }) {
+    return (
+        <section className="border-border-soft rounded-xl border p-4">
+            <img
+                src={menu.imageUrl}
+                alt="menu dishes"
+                className="w-full rounded object-cover"
+            ></img>
+            <h1>{menu.name}</h1>
+            <p>{menu.unitPrice}</p>
+            <ul className="flex">
+                {menu.ingredients?.map((item: string, index: number) => (
+                    <li key={index}>{item}</li>
+                ))}
+            </ul>
+        </section>
     )
 }
 
