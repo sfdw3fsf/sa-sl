@@ -1,36 +1,52 @@
 import React, { ReactNode } from 'react'
 import FormInput from './FormInput'
 import FormSelect from './FormSelect'
-import { FormType } from '../../utils/enum/FormEnum'
+import { FieldValues, UseControllerProps } from 'react-hook-form'
+import FormCheckBox from './FormCheckbox'
+import { twMerge } from 'tailwind-merge'
 
-type FormFieldProps = {
-    type?: FormType
-    rightNode?: ReactNode
-}
+type FormComponentProps = 'input' | 'checkbox' | 'select'
 
-function FormField({ type, rightNode }: FormFieldProps) {
-    const formType = () => {
-        switch (type) {
-            // case FormType.FORM_INPUT:
-            //     return <FormInput />
+type FormFieldProps<T extends FieldValues> = {
+   type: FormComponentProps
+   rightNode?: ReactNode
+} & Pick<UseControllerProps<T>, 'name' | 'control'> & {
+      label?: string
+      className?: string
+   }
 
-            // case FormType.FORM_SEARCH_INPUT:
-            //     return <FormInput />
+function FormField<T extends FieldValues>({
+   type,
+   rightNode,
+   name,
+   control,
+   label,
+   className,
+}: FormFieldProps<T>) {
+   const formType = () => {
+      switch (type) {
+         case 'input':
+            return <FormInput name={name} control={control} />
 
-            case FormType.FORM_SELECT:
-                return <FormSelect />
+         case 'select':
+            return <FormSelect />
 
-            default:
-            // return <FormInput />
-        }
-    }
+         case 'checkbox':
+            return <FormCheckBox name={name} control={control} />
 
-    return (
-        <div className="flex flex-col">
-            {/* Label */}
-            {formType()}
-        </div>
-    )
+         default:
+         // return <FormInput />
+      }
+   }
+
+   return (
+      <div className={twMerge('flex flex-col gap-1', className)}>
+         {/* Label */}
+         {!!label && <label className="text-sm">{label}</label>}
+         {/* FormComponent */}
+         {formType()}
+      </div>
+   )
 }
 
 export default FormField

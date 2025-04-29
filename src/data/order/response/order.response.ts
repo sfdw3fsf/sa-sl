@@ -1,6 +1,6 @@
 export type OrderDetailRESP = {
     customer: string
-    estimatedDelivery: Date
+    estimatedDelivery: string
     id: string
     orderPrice: number
     priority: boolean

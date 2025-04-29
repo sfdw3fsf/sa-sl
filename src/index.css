@@ -1,31 +1,50 @@
 @import 'tailwindcss';
 
 @theme {
-    --font-display: 'Satoshi', sans-serif;
-    --color-avocado-500: oklch(0.84 0.18 117.33);
+   --font-display: 'Satoshi', sans-serif;
+   --color-avocado-500: oklch(0.84 0.18 117.33);
 
-    --color-primary-100: #959cb6;
-    --color-primary-500: #0c1421;
-    --color-primary-600: #934;
+   --color-primary-100: #959cb6;
+   --color-primary-500: #0c1421;
+   --color-lable: #101828;
+   --color-primary-600: #934;
 
-    --color-border-soft: #e2e8f0;
+   --color-border-soft: #e2e8f0;
 
-    --color-placeholder: #64748b;
+   --color-placeholder: #64748b;
 
-    --color-brand: #34987b;
+   --color-brand: #acc572;
+   --color-brand-50: #96ae4d;
 
-    --color-bg-slate-50: '#F8FAFC';
+   --color-bg-slate-50: '#F8FAFC';
 
-    --color-text-1: #94a3b8;
-    --color-text-2: #64748b;
+   --color-text-1: #94a3b8;
+   --color-text-2: #64748b;
+
+   /* Button */
+   --color-azure-500: #0085fb; /*normal*/
+   --color-azure-600: #0079e4; /*hover*/
+   --color-azure-700: #005eb2;
+   --color-azure-800: #00498a; /*press*/
+   --color-gray-400: #98a2b3; /*disabled*/
+
+   --color-gray-500: #667085;
 }
 
 /* Base attribute h1,p... */
 @layer base {
-    body {
-        /* @apply min-w-screen p-6; */
-        @apply h-full;
-    }
+   @font-face {
+      font-family: 'RubikFont';
+      src: url('/font/Rubik-VariableFont_wght.ttf');
+      font-weight: 100 900;
+      font-style: normal;
+   }
+
+   body {
+      /* @apply min-w-screen p-6; */
+      @apply h-full;
+      font-family: 'RubikFont', sans-serif;
+   }
 }
 
 /* Self classes */
@@ -38,40 +57,40 @@
 
 /* Src Jonas */
 .loader {
-    width: 45px;
-    aspect-ratio: 0.75;
-    --c: no-repeat linear-gradient(#333 0 0);
-    background:
-        var(--c) 0% 50%,
-        var(--c) 50% 50%,
-        var(--c) 100% 50%;
-    background-size: 20% 50%;
-    animation: loading 1s infinite linear;
+   width: 45px;
+   aspect-ratio: 0.75;
+   --c: no-repeat linear-gradient(#333 0 0);
+   background:
+      var(--c) 0% 50%,
+      var(--c) 50% 50%,
+      var(--c) 100% 50%;
+   background-size: 20% 50%;
+   animation: loading 1s infinite linear;
 }
 
 @keyframes loading {
-    20% {
-        background-position:
-            0% 0%,
-            50% 50%,
-            100% 50%;
-    }
-    40% {
-        background-position:
-            0% 100%,
-            50% 0%,
-            100% 50%;
-    }
-    60% {
-        background-position:
-            0% 50%,
-            50% 100%,
-            100% 0%;
-    }
-    80% {
-        background-position:
-            0% 50%,
-            50% 50%,
-            100% 100%;
-    }
+   20% {
+      background-position:
+         0% 0%,
+         50% 50%,
+         100% 50%;
+   }
+   40% {
+      background-position:
+         0% 100%,
+         50% 0%,
+         100% 50%;
+   }
+   60% {
+      background-position:
+         0% 50%,
+         50% 100%,
+         100% 0%;
+   }
+   80% {
+      background-position:
+         0% 50%,
+         50% 50%,
+         100% 100%;
+   }
 }
