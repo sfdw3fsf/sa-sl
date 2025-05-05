@@ -10,8 +10,8 @@ import React from 'react'
 // -----------EXAMPLE ----------------------------
 
 type User = {
-    name: string
-    age: number
+   name: string
+   age: number
 }
 // Now you want to create a type includes all of User information attributes but in optional or undefined
 
@@ -38,8 +38,8 @@ type RequireUser = Required<User>
 //READ_ONLY
 
 interface ImmutableUser {
-    readonly name: string
-    readonly code: number
+   readonly name: string
+   readonly code: number
 }
 
 // Case 1
@@ -51,52 +51,60 @@ const AdminInfo: ImmutableUser = { name: 'admin', code: 123 }
 //INTERSECTION AND UNION
 
 interface Person {
-    name: string
+   name: string
 }
 
 interface LifeSpan {
-    birth: Date
-    death: Date
+   birth: Date
+   death: Date
 }
 
 type PersonSpan = Person & LifeSpan
 
 const DavyLs: PersonSpan = {
-    name: 'Davy',
-    birth: new Date('2024/12/02'),
-    death: new Date('2034/12/02'),
+   name: 'Davy',
+   birth: new Date('2024/12/02'),
+   death: new Date('2034/12/02'),
 }
 
 const DavyLsAdditional: PersonSpan = {
-    name: 'Davy',
-    birth: new Date('2024/12/02'),
-    death: new Date('2034/12/02'),
-    // addition: 'lavy',
+   name: 'Davy',
+   birth: new Date('2024/12/02'),
+   death: new Date('2034/12/02'),
+   // addition: 'lavy',
 }
 
 type keys = keyof (Person | LifeSpan)
 type keys2 = keyof (Person & LifeSpan)
 
 function getKeys<K extends string>(val: any, key: K) {
-    return val + key
+   return val + key
 }
 getKeys({}, '12')
 
 const person: {
-    name: string
-    hobbies: string[]
+   name: string
+   hobbies: string[]
 } = {
-    name: 'Huy',
-    hobbies: ['reading books', 'healing'],
+   name: 'Huy',
+   hobbies: ['reading books', 'healing'],
 }
 
 for (const hobby of person.hobbies) {
-    console.log(hobby.toUpperCase())
-    // console.log(hobby.map())  show error here because hobby is string
+   console.log(hobby.toUpperCase())
+   // console.log(hobby.map())  show error here because hobby is string
 }
 
+// test assignable warning
+type A = 'A'
+type B = 'B'
+
+type AB = A | B
+const a: AB = 'A'
+const c: AB = 'C'
+
 function TypeScripts() {
-    return <div>TypeScripts</div>
+   return <div>TypeScripts</div>
 }
 
 export default TypeScripts

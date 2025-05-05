@@ -9,14 +9,16 @@ import { ReactQueryDevtools } from '@tanstack/react-query-devtools'
 const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')!).render(
-    <StrictMode>
-        <QueryClientProvider client={queryClient}>
-            <BrowserRouter>
-                <App />
-            </BrowserRouter>
-            {/* By default, React Query Devtools are only included in bundles when process.env.NODE_ENV === 'development', 
+   <StrictMode>
+      <QueryClientProvider client={queryClient}>
+         <BrowserRouter>
+            <div className="min-h-screen w-full">
+               <App />
+            </div>
+         </BrowserRouter>
+         {/* By default, React Query Devtools are only included in bundles when process.env.NODE_ENV === 'development', 
             so you don't need to worry about excluding them during a production build. */}
-            <ReactQueryDevtools initialIsOpen={false} />
-        </QueryClientProvider>
-    </StrictMode>
+         <ReactQueryDevtools initialIsOpen={false} />
+      </QueryClientProvider>
+   </StrictMode>
 )

@@ -11,7 +11,7 @@ function PageContainer() {
    return (
       <>
          <Navbar />
-         <div className="flex w-full flex-col justify-center p-8">
+         <div className="flex h-full min-h-[calc(100vh-140px)] w-full flex-col p-8">
             <Outlet />
          </div>
       </>

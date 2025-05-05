@@ -5,6 +5,7 @@
    --color-avocado-500: oklch(0.84 0.18 117.33);
 
    --color-primary-100: #959cb6;
+   --color-primary-300: #585758;
    --color-primary-500: #0c1421;
    --color-lable: #101828;
    --color-primary-600: #934;
@@ -53,6 +54,14 @@
 
 /* Extend tailiwnd classes: scrollbar, line-clamp... */
 @layer utilities {
+   .no-scrollbar::-webkit-scrollbar {
+      display: none;
+   }
+   /* Hide scrollbar for IE, Edge and Firefox */
+   .no-scrollbar {
+      -ms-overflow-style: none; /* IE and Edge */
+      scrollbar-width: none; /* Firefox */
+   }
 }
 
 /* Src Jonas */

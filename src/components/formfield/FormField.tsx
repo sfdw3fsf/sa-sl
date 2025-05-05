@@ -2,8 +2,8 @@ import React, { ReactNode } from 'react'
 import FormInput from './FormInput'
 import FormSelect from './FormSelect'
 import { FieldValues, UseControllerProps } from 'react-hook-form'
-import FormCheckBox from './FormCheckbox'
 import { twMerge } from 'tailwind-merge'
+import FormCheckBox from './FormCheckBox'
 
 type FormComponentProps = 'input' | 'checkbox' | 'select'
 

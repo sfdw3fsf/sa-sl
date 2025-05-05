@@ -1,6 +1,6 @@
 export const spacing = {
    xl: 'py-3 px-5 rounded gap-2',
-   lg: 'px-4 py-2 rounded gap-2',
+   lg: 'px-4 py-2.5 rounded gap-2',
    md: 'px-4 py-2 rounded gap-2',
    xs: 'px-2 py-0.5 rounded gap-1.5',
 }
@@ -28,7 +28,7 @@ export const buttonTheme = {
       },
 
       border_box: {
-         color: 'text-gray-500 group-hover:text-azure-700 disabled:text-gray-400',
+         color: 'text-gray-500 group-hover:text-azure-700 disabled:text-gray-400 group-active:text-white',
          base: 'bg-transparent  enabled:active:bg-azure-800 disabled:bg-gray-400',
          spacing: spacing,
          border:

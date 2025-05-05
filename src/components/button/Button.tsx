@@ -6,7 +6,7 @@ type ButtonVariant = 'primary' | 'border_box'
 
 type ButtonSize = 'sm' | 'md' | 'lg'
 
-type ButtonProps = {
+export type ButtonProps = {
    variant?: ButtonVariant
    className?: string
    size?: ButtonSize
@@ -30,7 +30,8 @@ function Button({
             buttonTheme.base.spacing[size],
 
             buttonTheme.variants[variant].base,
-            buttonTheme.variants[variant].border
+            buttonTheme.variants[variant].border,
+            className
          )}
       >
          <div

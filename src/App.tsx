@@ -11,12 +11,9 @@ import ErrorPage from './pages/ErrorPage'
 import Order from './pages/order/Order'
 import OrderItem from './pages/order/OrderItem'
 import CreateOrder from './pages/order/CreateOrder'
+import StudyingPage from './pages/prevent_re-renders-by-props/StudyingPage'
 
 function App() {
-   const [color, setC] = useState()
-   const [t, setT] = useState(false)
-   const [string, setTring] = useState('hi')
-
    return (
       <>
          <Routes>
@@ -27,6 +24,7 @@ function App() {
                <Route path="menu" element={<MenuFood />} />
                <Route path="order" element={<CreateOrder />} />
                <Route path="order/:orderId" element={<Order />} />
+               <Route path="studying" element={<StudyingPage />} />
                <Route path="order/createOrder" element={<CreateOrder />} />
                <Route path="*" element={<ErrorPage />} />
             </Route>
