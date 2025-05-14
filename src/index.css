@@ -30,6 +30,10 @@
    --color-gray-400: #98a2b3; /*disabled*/
 
    --color-gray-500: #667085;
+
+   --color-text-danger: #f04438;
+   --color-text-success: #22c55e;
+   --color-text-helper: #94a3b8;
 }
 
 /* Base attribute h1,p... */

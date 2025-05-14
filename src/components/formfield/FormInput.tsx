@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react'
+import { InputHTMLAttributes, ReactNode } from 'react'
 import { FieldValues, useController, UseControllerProps } from 'react-hook-form'
 import { twMerge } from 'tailwind-merge'
 
@@ -8,13 +8,14 @@ type InputProps<T extends FieldValues> = Pick<
 > & {
    type?: string
    rightNode?: ReactNode
-}
+} & InputHTMLAttributes<HTMLInputElement>
 
 function FormInput<T extends FieldValues>({
    name,
    control,
    type,
    rightNode,
+   ...inputProps
 }: InputProps<T>) {
    // name | control is union in TypeScript, & will return type never so avoid it
    // control is optional because we have a case that context do not need it
@@ -28,6 +29,13 @@ function FormInput<T extends FieldValues>({
          )}
          {...field}
          value={field.value}
+         onChange={(e) => {
+            field.onChange(e)
+            inputProps.onChange?.(e)
+         }}
+         onFocus={(e) => {
+            inputProps.onFocus?.(e)
+         }}
          placeholder="Enter your information"
       ></input>
    )

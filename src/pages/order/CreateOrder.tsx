@@ -1,7 +1,8 @@
+import { yupResolver } from '@hookform/resolvers/yup'
 import { useForm } from 'react-hook-form'
 import FormField from '../../components/formfield/FormField'
 import Divider from '../../components/layout/Divider'
-
+import { OrderInput, OrderSchema } from './orderSchema/OrderSchema'
 // https://uibakery.io/regex-library/phone-number
 const isValidPhone = (str) =>
    /^\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}$/.test(
@@ -32,36 +33,31 @@ const fakeCart = [
    },
 ]
 
-type Cart = {
-   pizzaId: number
-   name: string
-   quantity: number
-   unitPrice: number
-   totalPrice: number
-}
+// type Cart = {
+//    pizzaId: number
+//    name: string
+//    quantity: number
+//    unitPrice: number
+//    totalPrice: number
+// }
 
-type OrderType = {
-   firstName: string
-   phoneNumber: string
-   address: string
-   priority: boolean
-   cart: Cart[]
-}
+// type OrderType = {
+//    firstName: string
+//    phoneNumber: string
+//    address: string
+//    priority: boolean
+//    cart: Cart[]
+// }
 
 function CreateOrder() {
    // const [withPriority, setWithPriority] = useState(false);
    const cart = fakeCart
-   const { handleSubmit, control } = useForm<OrderType>({
-      defaultValues: {
-         firstName: '',
-         phoneNumber: '',
-         address: '',
-         priority: false,
-         cart: [],
-      },
+   const { handleSubmit, control } = useForm<OrderInput>({
+      resolver: yupResolver(OrderSchema),
+      defaultValues: OrderSchema.getDefault(),
    })
 
-   const onSubmit = (data: OrderType) => {
+   const onSubmit = (data: OrderInput) => {
       console.log('data', data)
    }
    return (
@@ -77,6 +73,8 @@ function CreateOrder() {
                   type="input"
                   name={'firstName'}
                   control={control}
+                  messageText="It cool bro"
+                  showSuccessMessage
                />
 
                <FormField
@@ -84,6 +82,7 @@ function CreateOrder() {
                   type="input"
                   name={'phoneNumber'}
                   control={control}
+                  messageText="It cool bro"
                />
 
                <FormField

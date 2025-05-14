@@ -18,6 +18,11 @@ export const buttonTheme = {
          'flex justify-center items-center group transition-all duration-300 ease-in-out',
       fontSize: fontSize,
       spacing: spacing,
+      icon: {
+         sm: 'w-[14px] h-[12px]',
+         md: 'w-[14px] h-[12px]',
+         lg: 'w-[18px] h-[15px]',
+      },
    },
 
    variants: {

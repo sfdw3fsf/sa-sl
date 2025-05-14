@@ -1,4 +1,9 @@
-import React, { ReactNode } from 'react'
+import {
+   ButtonHTMLAttributes,
+   cloneElement,
+   ReactElement,
+   ReactNode,
+} from 'react'
 import { twMerge } from 'tailwind-merge'
 import { buttonTheme } from './button.theme'
 
@@ -6,12 +11,13 @@ type ButtonVariant = 'primary' | 'border_box'
 
 type ButtonSize = 'sm' | 'md' | 'lg'
 
-export type ButtonProps = {
+export type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement> & {
    variant?: ButtonVariant
    className?: string
    size?: ButtonSize
    children: ReactNode
    onClick?: () => void
+   icon?: ReactElement
 }
 
 function Button({
@@ -20,7 +26,18 @@ function Button({
    size = 'md',
    children,
    onClick,
+   icon,
+   ...props
 }: ButtonProps) {
+   const iconShadow = icon
+      ? cloneElement(icon, {
+           className: twMerge(
+              buttonTheme.base.icon[size],
+              buttonTheme.variants[variant].color
+           ),
+        })
+      : null
+
    return (
       <button
          onClick={onClick}
@@ -33,14 +50,18 @@ function Button({
             buttonTheme.variants[variant].border,
             className
          )}
+         {...props}
       >
-         <div
-            className={twMerge(
-               buttonTheme.base.fontSize[size],
-               buttonTheme.variants[variant].color
-            )}
-         >
-            {children}
+         <div className="flex items-center justify-center gap-1">
+            <div
+               className={twMerge(
+                  buttonTheme.base.fontSize[size],
+                  buttonTheme.variants[variant].color
+               )}
+            >
+               {children}
+            </div>
+            {!!icon && iconShadow}
          </div>
       </button>
    )

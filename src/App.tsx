@@ -1,16 +1,13 @@
-import { useState } from 'react'
-import viteLogo from '/vite.svg'
+import { Route, Routes } from 'react-router'
 import './App.css'
-import { Routes, Route } from 'react-router'
-import Home from './pages/Home'
-import Login from './pages/Login'
-import TypeScripts from './pages/TypeScriptsLearning'
-import MenuFood from './pages/menu/MenuFood'
 import PageContainer from './layouts/PageContainer'
 import ErrorPage from './pages/ErrorPage'
-import Order from './pages/order/Order'
-import OrderItem from './pages/order/OrderItem'
+import Login from './pages/Login'
+import TypeScripts from './pages/TypeScriptsLearning'
+import MainLeetCodePage from './pages/leetCodeParatice/MainLeetCodePage'
+import MenuFood from './pages/menu/MenuFood'
 import CreateOrder from './pages/order/CreateOrder'
+import Order from './pages/order/Order'
 import StudyingPage from './pages/prevent_re-renders-by-props/StudyingPage'
 
 function App() {
@@ -26,6 +23,8 @@ function App() {
                <Route path="order/:orderId" element={<Order />} />
                <Route path="studying" element={<StudyingPage />} />
                <Route path="order/createOrder" element={<CreateOrder />} />
+               <Route path="leetcode" element={<MainLeetCodePage />} />
+
                <Route path="*" element={<ErrorPage />} />
             </Route>
          </Routes>
