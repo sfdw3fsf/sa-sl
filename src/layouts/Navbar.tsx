@@ -4,6 +4,7 @@ import ListSvg from '../assets/icons/ListSvg'
 import { twMerge } from 'tailwind-merge'
 import CloseNavIcon from '../assets/icons/CloseNavIcon'
 import RightArrowIcon from '../assets/icons/RightArrowIcon'
+import { useLogout } from '../pages/logout/logout'
 import SearchOrder from '../pages/order/SearchOrder'
 
 const navBarOptions = ['NFT', 'Crypto', 'Blockchain', 'Web3', 'Metaverse']
@@ -174,7 +175,7 @@ const NavDivider = () => {
 }
 function Navbar() {
    const [open, setIsOpen] = useState<boolean>(false)
-
+   const { logout } = useLogout()
    const onToggle = (): void => setIsOpen((open: boolean) => !open)
 
    return (
@@ -191,7 +192,14 @@ function Navbar() {
             <SearchOrder />
 
             <div className="">
-               <p className="text-text-1 text-sm font-normal">Log out</p>
+               <button
+                  className="text-text-1 hover:text-brand text-sm font-normal transition-all duration-300 ease-in-out"
+                  onClick={() => {
+                     logout()
+                  }}
+               >
+                  Log out
+               </button>
                <span>
                   <span className="text-text-1 text-sm font-normal">
                      {`  Welcome back, `}

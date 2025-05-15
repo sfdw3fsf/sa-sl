@@ -6,17 +6,25 @@ const API_URL = 'https://react-fast-pizza-api.jonas.io/api'
 ///AXIOS
 
 export const instance = axios.create({
-    baseURL: API_URL,
-    paramsSerializer: (params) => {
-        return qs.stringify(params, { arrayFormat: 'comma' }) //for example
-        // const response = await api.get('/users', {
-        //   params: { ids: [1, 2, 3] },
-        // }); qs.string help from /users?ids[]=1&ids[]=2&ids[]=3 -> /users?ids=1,2,3
-    },
+   baseURL: API_URL,
+   paramsSerializer: (params) => {
+      return qs.stringify(params, { arrayFormat: 'comma' }) //for example
+      // const response = await api.get('/users', {
+      //   params: { ids: [1, 2, 3] },
+      // }); qs.string help from /users?ids[]=1&ids[]=2&ids[]=3 -> /users?ids=1,2,3
+   },
+})
+
+//DUMMY
+export const instanceDummy = axios.create({
+   baseURL: 'https://dummyjson.com',
+   paramsSerializer: (params) => {
+      return qs.stringify(params, { arrayFormat: 'comma' })
+   },
 })
 
 const responseFunction = (response) => {
-    return response.data
+   return response.data
 }
 
 instance.interceptors.response.use(responseFunction)

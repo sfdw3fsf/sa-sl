@@ -9,18 +9,26 @@ import MenuFood from './pages/menu/MenuFood'
 import CreateOrder from './pages/order/CreateOrder'
 import Order from './pages/order/Order'
 import StudyingPage from './pages/prevent_re-renders-by-props/StudyingPage'
+import AuthRoute from './router/AuthRoute'
+import UnAuthRoute from './router/UnAuthRoute'
 
 function App() {
    return (
       <>
          <Routes>
             <Route path="/" element={<PageContainer />}>
-               <Route index element={<Login />} />
-               <Route path="login" element={<Login />} />
+               <Route element={<UnAuthRoute />}>
+                  <Route index element={<Login />} />
+                  <Route path="login" element={<Login />} />
+               </Route>
+
+               <Route element={<AuthRoute />}>
+                  <Route path="menu" element={<MenuFood />} />
+                  <Route path="order" element={<CreateOrder />} />
+                  <Route path="order/:orderId" element={<Order />} />
+               </Route>
                <Route path="ts" element={<TypeScripts />} />
-               <Route path="menu" element={<MenuFood />} />
-               <Route path="order" element={<CreateOrder />} />
-               <Route path="order/:orderId" element={<Order />} />
+
                <Route path="studying" element={<StudyingPage />} />
                <Route path="order/createOrder" element={<CreateOrder />} />
                <Route path="leetcode" element={<MainLeetCodePage />} />

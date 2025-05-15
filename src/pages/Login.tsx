@@ -1,19 +1,36 @@
 import { yupResolver } from '@hookform/resolvers/yup'
+import { useMutation } from '@tanstack/react-query'
+import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import GoogleIcon from '../assets/icons/GoogleIcon'
 import Button from '../components/button/Button'
 import FormField from '../components/formfield/FormField'
+import { loginAPI } from '../data/login/login.api'
+import { LoginResp } from '../data/login/response'
+import { useAuthStore } from '../store/authStore'
+import { RegularResponse } from '../utils/type/BaseResponse'
 import { LoginInput, LoginSchema } from './login/LoginShema'
 
 function Login() {
-   const { handleSubmit, control } = useForm<LoginInput>({
+   const { handleSubmit, control, reset } = useForm<LoginInput>({
       resolver: yupResolver(LoginSchema),
       defaultValues: LoginSchema.getDefault(),
    })
 
-   const loginSubmit = (data) => {
-      console.log(data)
+   const loginSubmit = (data: LoginInput) => {
+      login(data)
    }
+   const authStore = useAuthStore()
+
+   const { mutate: login, isLoading } = useMutation({
+      mutationFn: (request: LoginInput) => loginAPI(request),
+      onSuccess: ({ data }: RegularResponse<LoginResp>) => {
+         authStore.setUserInfo(data)
+         authStore.setAccessToken(data.accessToken)
+      },
+   })
+
+   useEffect(() => reset(), [reset])
 
    return (
       <div className="flex w-full max-w-[1920px] items-center gap-6">
